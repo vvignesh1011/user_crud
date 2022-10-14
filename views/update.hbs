@@ -1,0 +1,18 @@
+<div class="container">
+    {{#if user}}
+    <form action="/users/update/{{user.id}}?_method=PATCH" method="post" class="addForm">
+        <label for="name">name :</label><br>
+        <input type="text" name="name" id="name" value={{user.name}} required><br>
+        <label for="email">email :</label><br>
+        <input type="email" name="email" id="email" value={{user.email}} required><br>
+        <label for="mobileNo">mobileNo :</label><br>
+        <input type="number" name="mobileNO" id="mobileNO" value={{user.mobileNO}} required><br>
+        <label for="status">status :</label><br>
+        <select name="active" id="active" required>
+            <option value="true">active</option>
+            <option value="false">disable</option>
+        </select><br>
+        <button type="submit">update</button>
+    </form>
+    {{/if}}
+</div>

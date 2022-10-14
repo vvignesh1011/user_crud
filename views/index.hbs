@@ -1,0 +1,56 @@
+<style>
+    div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+    table{
+        margin: 20px;
+        width: 80%;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td,th{
+        padding: 5px;
+        border: 1px solid black;
+        text-align: center;
+        
+    }
+    table button{
+        padding:5px 20px;
+           }
+    .btn-td form{
+        display:inline-block ;
+    }
+</style>
+
+
+<div class="container">
+    <table>
+        <th>name</th>
+        <th>mobileNO</th>
+        <th>email</th>
+        <th>status</th>
+        <th>action</th>
+        {{#if user}}
+        {{#each user}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.mobileNO}}</td>
+            <td>{{this.email}}</td>
+            <td>{{#if this.active}}
+                active{{else}}disable{{/if}}
+            </td>
+            <td class="btn-td">
+                <form action="/users/delete/{{this.id}}?_method=DELETE" method="post">
+                <button type="submit">DELETE</button>
+                </form>
+                <a href="/users/update/{{this.id}}"><button type="submit">UPDATE</button></a>
+            </td>
+        {{/each}}
+        {{/if}}
+    </table>
+    <tr><a href="/users/add"><button class="addBtn">add</button></a></tr>
+</div>
